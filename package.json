@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "start": "node app",
+    "monstart": "nodemon app"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs": "^3.15.0",
+    "express": "^4.17.3",
+    "formidable": "^2.0.1",
+    "jpeg-js": "^0.4.3",
+    "multer": "^1.4.4",
+    "nsfwjs": "^2.4.1"
+  }
+}
