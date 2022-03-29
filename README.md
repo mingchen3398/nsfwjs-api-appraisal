@@ -24,4 +24,5 @@ Hi there 👋. Looks like you are running TensorFlow.js in Node.js. To speed thi
 模块已运行
 ```
 ## 说明
-因为`@tensorflow/tfjs-node`安装对于服务器而言过于复杂(<b>需要安装Visual Studio</b>),所以就安装了`@tensorflow/tfjs`
+1.因为`@tensorflow/tfjs-node`安装对于服务器而言过于复杂(<b>需要安装Visual Studio</b>),所以就安装了`@tensorflow/tfjs`  
+2.目前图片鉴定仅支持png与jpg两种格式
