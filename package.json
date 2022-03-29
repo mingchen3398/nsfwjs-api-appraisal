@@ -8,6 +8,7 @@
     "express": "^4.17.3",
     "formidable": "^2.0.1",
     "jpeg-js": "^0.4.3",
+    "log4js": "^6.4.4",
     "multer": "^1.4.4",
     "nsfwjs": "^2.4.1"
   }

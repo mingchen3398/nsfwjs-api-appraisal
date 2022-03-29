@@ -1,7 +1,7 @@
 const port = 3456
 const fs = require("fs");
 const path = require("path");
-
+const log4js = require("log4js");
 const express = require('express')
 const multer = require('multer')
 const jpeg = require('jpeg-js')
@@ -11,13 +11,18 @@ const nsfw = require('nsfwjs')
 
 const app = express()
 const upload = multer()
+const log4jsConfig = require('./config/log4js')
+
+log4js.configure(log4jsConfig)
+const logger = log4js.getLogger();
+var errLogger = log4js.getLogger('err');
 
 let _model
 
 const convert = async (img) => {
     // Decoded image in UInt8 Byte array
+
     const image = await jpeg.decode(img, true)
-console.log(image);
     const numChannels = 3
     const numPixels = image.width * image.height
     const values = new Int32Array(numPixels * numChannels)
@@ -34,35 +39,52 @@ app.get('/', (req, res) => {
 })
 
 app.post('/image', upload.single('image'), async (req, res) => {
+    // console.log(req.file.mimetype);
+    // image/png
     if (!req.file) res.status(400).send('Missing image multipart/form-data')
     else {
-        const image = await convert(req.file.buffer)
-        const predictions = await _model.classify(image)
-        image.dispose()
-        res.json(predictions)
-        fs.appendFile('error.txt', JSON.stringify(predictions), function (err) {
-            if (err) throw err;
-            console.log('The "data to append" was appended to file!');
-        });
+        try {
+            const image = await convert(req.file.buffer)
+            const predictions = await _model.classify(image)
+            image.dispose()
+            res.json(formatOutputData(predictions))
+            toWriteLogs('info', formatOutputData(predictions))
+        } catch (error) {
+            res.send({ code: 500 })
+            toWriteLogs('error', error)
+        }
+
     }
 })
+
+const formatOutputData = (predictions, outVal = {}) => {
+    predictions.forEach(item => {
+        outVal[Object.values(item)[0]] = Object.values(item)[1]
+    })
+    return outVal
+}
+
+const toWriteLogs = (type, data) => {
+    if (type === 'info') {
+        return logger.info(data)
+    } else {
+        return errLogger.error(data)
+    }
+}
+
 
 const load_model = async () => {
     _model = await nsfw.load()
 }
 
-// Keep the model in memory, make sure it's loaded only once
+
 load_model().then(() => {
     app.listen(port, () => {
-        console.log(`Example app listening on port ${port}`)
+        console.log(`项目已运行在端口 ${port}`)
     })
 })
     .catch(err => {
-        err = typeof err == 'string' ? err : JSON.stringify(err)
-        fs.appendFile('error.txt', err, function (err) {
-            if (err) throw err;
-            console.log('The "data to append" was appended to file!');
-        });
+        toWriteLogs('error', err)
     })
 
 
