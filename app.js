@@ -6,6 +6,9 @@ const express = require('express')
 const multer = require('multer')
 const jpeg = require('jpeg-js')
 
+// var PNG = require('png-js');
+
+
 const tf = require('@tensorflow/tfjs')
 const nsfw = require('nsfwjs')
 
@@ -21,6 +24,9 @@ let _model
 
 const convert = async (img) => {
     // Decoded image in UInt8 Byte array
+// var myimage = new PNG(img);
+// let a = await myimage.decode()
+// console.log(a);
 
     const image = await jpeg.decode(img, true)
     const numChannels = 3
@@ -59,7 +65,7 @@ app.post('/image', upload.single('image'), async (req, res) => {
 
 const formatOutputData = (predictions, outVal = {}) => {
     predictions.forEach(item => {
-        outVal[Object.values(item)[0]] = Object.values(item)[1]
+        outVal[Object.values(item)[0].toLowerCase()] = Object.values(item)[1]
     })
     return outVal
 }
