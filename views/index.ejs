@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='/app.css' />
+</head>
+
+<body>
+  <div class="space-y-4 bg-white p-3 rounded-md mb-5">
+    <div>
+      <p class="text-lg text-gray-700 font-semibold">接口URL</p>
+      <pre class="my-2 bg-white rounded-md p-4 text-sm bg-gray-500 text-white overflow-x-auto">http://nsfw.poshir.top/
+</pre>
+    </div>
+
+    <div class="my-4 overflow-x-auto">
+      <p class="text-sm mb-2">响应状态码 HTTP Status Code 说明</p>
+      <table class="min-w-full">
+        <thead class="bg-white border">
+          <tr>
+            <th scope="col"
+              class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+              状态码
+            </th>
+            <th scope="col"
+              class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+              说明
+            </th>
+          </tr>
+        </thead>
+        <tbody class="bg-white border divide-y text-sm">
+          <!-- <tr>
+                <td class="px-3 py-2 whitespace-nowrap">401</td>
+                <td class="px-3 py-2 whitespace-nowrap">未登录或授权失败</td>
+            </tr>
+            <tr>
+                <td class="px-3 py-2 whitespace-nowrap">403</td>
+                <td class="px-3 py-2 whitespace-nowrap">管理员关闭了接口功能</td>
+            </tr>
+            <tr>
+                <td class="px-3 py-2 whitespace-nowrap">429</td>
+                <td class="px-3 py-2 whitespace-nowrap">超出请求配额，请求受限</td>
+            </tr> -->
+          <tr>
+            <td class="px-3 py-2 whitespace-nowrap">500</td>
+            <td class="px-3 py-2 whitespace-nowrap">服务端出现异常</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="text-sm my-2 text-red-500">文档中接口的请求参数，使用红色「*」符号标注，则表示为必传项。</p>
+  </div>
+  <div class="space-y-4 bg-white p-3 rounded-md">
+    <div>
+      <p class="text-lg text-gray-700 font-semibold">鉴定图片</p>
+      <pre class="my-2 bg-white rounded-md p-4 text-sm bg-gray-500 text-white overflow-x-auto"><span class="text-green-500 select-none">POST </span>/check
+</pre>
+      <div class="my-4 overflow-x-auto">
+        <p class="text-sm mb-2">Headers</p>
+        <table class="min-w-full">
+          <thead class="bg-white border">
+            <tr>
+              <th scope="col"
+                class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                字段
+              </th>
+              <th scope="col"
+                class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                类型
+              </th>
+              <th scope="col"
+                class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                说明
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white border divide-y text-sm">
+            <tr>
+              <td class="px-3 py-2 whitespace-nowrap"><span class="text-red-500">*</span>Content-Type</td>
+              <td class="px-3 py-2 whitespace-nowrap">String</td>
+              <td class="px-3 py-2 whitespace-nowrap">需要设置为 multipart/form-data</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="my-4 overflow-x-auto">
+        <p class="text-sm mb-2">请求参数(Body)</p>
+        <table class="min-w-full">
+          <thead class="bg-white border">
+            <tr>
+              <th scope="col"
+                class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                字段
+              </th>
+              <th scope="col"
+                class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                类型
+              </th>
+              <th scope="col"
+                class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                说明
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white border divide-y text-sm">
+            <tr>
+              <td class="px-3 py-2 whitespace-nowrap"><span class="text-red-500">*</span>image</td>
+              <td class="px-3 py-2 whitespace-nowrap">File</td>
+              <td class="px-3 py-2 whitespace-nowrap">邮箱</td>
+            </tr>
+            <tr>
+              <td class="px-3 py-2 whitespace-nowrap"><span class="text-red-500">*</span>password</td>
+              <td class="px-3 py-2 whitespace-nowrap">String</td>
+              <td class="px-3 py-2 whitespace-nowrap">密码</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="my-4 overflow-x-auto">
+        <p class="text-sm mb-2">返回参数</p>
+        <table class="min-w-full">
+          <thead class="bg-white border">
+            <tr>
+              <th scope="col"
+                class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                字段
+              </th>
+              <th scope="col"
+                class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                类型
+              </th>
+              <th scope="col"
+                class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                说明
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white border divide-y text-sm">
+            <tr>
+              <td class="px-3 py-2 whitespace-nowrap">status</td>
+              <td class="px-3 py-2 whitespace-nowrap">Number</td>
+              <td class="px-3 py-2 whitespace-nowrap">状态，200</td>
+            </tr>
+            <tr>
+              <td class="px-3 py-2 whitespace-nowrap">statusText</td>
+              <td class="px-3 py-2 whitespace-nowrap">String</td>
+              <td class="px-3 py-2 whitespace-nowrap">描述信息</td>
+            </tr>
+            <tr>
+              <td class="px-3 py-2 whitespace-nowrap">data</td>
+              <td class="px-3 py-2 whitespace-nowrap">Object</td>
+              <td class="px-3 py-2 whitespace-nowrap">数据</td>
+            </tr>
+            <tr>
+              <td class="px-3 py-2 whitespace-nowrap pl-6">neutral</td>
+              <td class="px-3 py-2 whitespace-nowrap">Number</td>
+              <td class="px-3 py-2 whitespace-nowrap">为中性的概率(0-1)</td>
+            </tr>
+            <tr>
+              <td class="px-3 py-2 whitespace-nowrap pl-6">drawing</td>
+              <td class="px-3 py-2 whitespace-nowrap">Number</td>
+              <td class="px-3 py-2 whitespace-nowrap">为绘画的概率(0-1)</td>
+            </tr>
+            <tr>
+              <td class="px-3 py-2 whitespace-nowrap pl-6">sexy</td>
+              <td class="px-3 py-2 whitespace-nowrap">Number</td>
+              <td class="px-3 py-2 whitespace-nowrap">为性感的概率(0-1)</td>
+            </tr>
+            <tr>
+              <td class="px-3 py-2 whitespace-nowrap pl-6">porn</td>
+              <td class="px-3 py-2 whitespace-nowrap">Number</td>
+              <td class="px-3 py-2 whitespace-nowrap">为色情的概率(0-1)</td>
+            </tr>
+            <tr>
+              <td class="px-3 py-2 whitespace-nowrap pl-6">hentai</td>
+              <td class="px-3 py-2 whitespace-nowrap">Number</td>
+              <td class="px-3 py-2 whitespace-nowrap">为变态?的概率(0-1)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="my-4 overflow-x-auto">
+
+        <p class="text-sm mb-2">返回示例及说明</p>
+
+        可访问<a href="/demo" target="_blank"
+          style="--tw-text-opacity: 1;color: rgb(34 197 94/var(--tw-text-opacity));">demo</a>查看
+        <pre class="my-2 bg-white rounded-md p-4 text-sm bg-gray-500 text-white overflow-x-auto">          {
+            neutral: 0.998292863368988,
+            drawing: 0.0016498661134392023,
+            sexy: 0.00005419895751401782,
+            porn: 0.0000016388736412409344,
+            hentai: 0.0000014019005902810022
+          }</pre>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

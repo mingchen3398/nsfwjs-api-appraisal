@@ -3,17 +3,16 @@ module.exports =  {
         infoLogs: {
             type: 'dateFile',
             filename: 'logs/info/info.log',
-            backups: 10,  // 仅保留最新的五个日志文件
-            pattern: ".yyyy-MM-dd-hh", // 用于确定何时滚动日志的模式
+            backups: 200,  // 仅保留最新的五个日志文件
+            pattern: ".yyyy-MM-dd-hh",
             alwaysIncludePattern: true,
             compress: true
         },
         errorLogs: {
-            type: 'file',
+            type: 'dateFile',
             filename: 'logs/error/error.log',
-            maxLogSize: 10485760,
-            pattern: ".yyyy-MM-dd-hh", // 用于确定何时滚动日志的模式
-            backups: 20,
+            pattern: ".yyyy-MM-dd-hh",
+            backups: 200,
             compress: true
         }
     },
