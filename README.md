@@ -1,3 +1,7 @@
+## 说明
+ **1.因为`@tensorflow/tfjs-node`安装对于服务器而言过于复杂(<b>需要安装Visual Studio</b>),所以就安装了`@tensorflow/tfjs`  
+2.目前图片鉴定仅支持png与jpg两种格式  
+3.node版本建议使用14.18+,且小于17,部署过程中,由于服务器使用的是12.22.x,导致了报错** 
 ## 安装依赖
 ```shell
 npm install / yarn 
@@ -23,7 +27,3 @@ Hi there 👋. Looks like you are running TensorFlow.js in Node.js. To speed thi
 项目已运行在端口 3456
 模块已运行
 ```
-## 说明
-1.因为`@tensorflow/tfjs-node`安装对于服务器而言过于复杂(<b>需要安装Visual Studio</b>),所以就安装了`@tensorflow/tfjs`  
-2.目前图片鉴定仅支持png与jpg两种格式  
-3.node版本建议使用14.18+,且小于17,部署过程中,由于服务器使用的是12.22.x,导致了报错
