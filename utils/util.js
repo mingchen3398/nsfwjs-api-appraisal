@@ -30,7 +30,8 @@ const convert = async (img, type) => {
 }
 
 const fn = async (req, res) => {
-    // console.log(req.hostname);
+    if (!req.file) res.status(400).send('请选择文件')
+
     // 作者能力有限,仅支持png与jpg
     const imgType = ['image/png', 'image/jpeg'].indexOf(req.file.mimetype)
     if (imgType === -1) {
@@ -43,7 +44,6 @@ const fn = async (req, res) => {
         })
         return
     }
-    if (!req.file) res.status(400).send('Missing image multipart/form-data')
     else {
         try {
             const image = await convert(req.file.buffer, imgType)
