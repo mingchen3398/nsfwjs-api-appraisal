@@ -3,7 +3,7 @@ module.exports =  {
         infoLogs: {
             type: 'dateFile',
             filename: 'logs/info/info.log',
-            backups: 48, 
+            backups: 4800, 
             pattern: ".yyyy-MM-dd-hh",
             alwaysIncludePattern: true,
             //compress: true
@@ -12,7 +12,7 @@ module.exports =  {
             type: 'dateFile',
             filename: 'logs/error/error.log',
             pattern: ".yyyy-MM-dd-hh",
-            backups: 48,
+            backups: 4800,
             //compress: true
         }
     },

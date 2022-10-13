@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "start": "node app",
-    "monstart": "nodemon app"
+    "start": "node app --max-old-space-size=330 --max_memory_restart 330M",
+    "monstart": "nodemon app --max-old-space-size=330 --max_memory_restart 330M"
   },
   "dependencies": {
     "@tensorflow/tfjs": "^3.15.0",
